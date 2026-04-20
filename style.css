@@ -1,0 +1,164 @@
+:root {
+    --primary: #ff9933; /* Saffron */
+    --secondary: #138808; /* Indian Green */
+    --accent: #000080; /* Navy Blue */
+    --bg: #f8f9fa;
+    --text: #333;
+    --card-bg: #ffffff;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+[data-theme="dark"] {
+    --bg: #121212;
+    --text: #e0e0e0;
+    --card-bg: #1e1e1e;
+    --shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background-color: var(--bg);
+    color: var(--text);
+    transition: background 0.3s ease, color 0.3s ease;
+    overflow-x: hidden;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 5%;
+    background: var(--card-bg);
+    box-shadow: var(--shadow);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.logo { font-weight: 800; font-size: 1.5rem; }
+.saffron { color: #ff9933; }
+.white { color: var(--text); }
+.green { color: #138808; }
+
+.nav-links { list-style: none; display: flex; gap: 20px; }
+.nav-links a { text-decoration: none; color: var(--text); font-weight: 500; transition: 0.3s; }
+.nav-links a:hover { color: var(--primary); }
+
+/* Buttons */
+.btn-primary {
+    background: var(--primary);
+    color: white;
+    padding: 10px 25px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+.btn-primary:hover { background: #e68a00; transform: translateY(-2px); }
+
+.btn-outline {
+    border: 2px solid var(--primary);
+    background: transparent;
+    color: var(--primary);
+    padding: 10px 25px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-icon { background: none; border: none; font-size: 1.2rem; cursor: pointer; color: var(--text); margin-right: 15px; }
+
+/* Sections */
+section { display: none; padding: 4rem 5%; min-height: 90vh; animation: fadeIn 0.5s ease-in-out; }
+section.active { display: block; }
+
+@keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+/* Hero */
+.hero { text-align: center; max-width: 800px; margin: 0 auto; padding-top: 5rem; }
+.hero h1 { font-size: 3.5rem; line-height: 1.2; margin-bottom: 1.5rem; }
+.hero h1 span { color: var(--primary); }
+.hero p { font-size: 1.2rem; color: #666; margin-bottom: 2rem; }
+
+/* Forms */
+.glass-card {
+    background: var(--card-bg);
+    padding: 2.5rem;
+    border-radius: 15px;
+    box-shadow: var(--shadow);
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group { margin-bottom: 1.5rem; }
+.form-group label { display: block; margin-bottom: 0.5rem; font-weight: 600; }
+.form-group input, .form-group select, .form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    background: var(--bg);
+    color: var(--text);
+}
+
+/* Cards Grid */
+.cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 25px;
+    margin-top: 2rem;
+}
+
+.card {
+    background: var(--card-bg);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    transition: 0.3s;
+}
+.card:hover { transform: translateY(-5px); }
+.card-img { width: 100%; height: 200px; object-fit: cover; }
+.card-content { padding: 1.5rem; }
+.status-badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    float: right;
+}
+.pending { background: #ffeebb; color: #856404; }
+.solved { background: #d4edda; color: #155724; }
+
+/* Dashboard Stats */
+.stats-row { display: flex; gap: 20px; margin-bottom: 2rem; flex-wrap: wrap; }
+.stat-card {
+    flex: 1;
+    min-width: 200px;
+    padding: 2rem;
+    background: var(--card-bg);
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: var(--shadow);
+}
+.stat-card h3 { font-size: 1rem; color: #666; margin-bottom: 0.5rem; }
+.stat-card p { font-size: 2.5rem; font-weight: 800; }
+.saffron-bg { border-bottom: 5px solid var(--primary); }
+.green-bg { border-bottom: 5px solid var(--secondary); }
+
+.chart-container { padding: 2rem; margin-top: 2rem; }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2.5rem; }
+    .stats-row { flex-direction: column; }
+}

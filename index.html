@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Local Problem Solver | Indian Startup</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Font Awesome for Icons -->
+    <link rel="style.css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/all.min.css">
+    <!-- Chart.js for Dashboard -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <span class="saffron">Local</span> <span class="white">Problem</span> <span class="green">Solver</span>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#" onclick="showSection('home')">Home</a></li>
+            <li><a href="#" onclick="showSection('report')">Report</a></li>
+            <li><a href="#" onclick="showSection('view')">View Problems</a></li>
+            <li><a href="#" onclick="showSection('dashboard')">Dashboard</a></li>
+        </ul>
+        <div class="nav-actions">
+            <button id="theme-toggle" class="btn-icon"><i class="fas fa-moon"></i></button>
+            <button class="btn-primary">Login</button>
+        </div>
+    </nav>
+
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="active">
+            <div class="hero">
+                <h1 class="animate-up">Clean India, Green India. <br><span>Start reporting today.</span></h1>
+                <p class="animate-up">A modern platform for Indian citizens to report local issues and track their progress in real-time. Together, we can make our cities better.</p>
+                <div class="hero-btns animate-up">
+                    <button class="btn-primary" onclick="showSection('report')">Report Problem</button>
+                    <button class="btn-outline" onclick="showSection('view')">View All Issues</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Report Problem Page -->
+        <section id="report">
+            <div class="container">
+                <h2 class="section-title">Report a New Problem</h2>
+                <form id="problemForm" class="glass-card">
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" id="userName" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Location (City/Area)</label>
+                        <input type="text" id="location" placeholder="e.g. Indiranagar, Bengaluru" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Problem Type</label>
+                        <select id="problemType" required>
+                            <option value="">Select Category</option>
+                            <option value="Garbage">Garbage Disposal</option>
+                            <option value="Pothole">Potholes</option>
+                            <option value="Water Leakage">Water Leakage</option>
+                            <option value="Electricity">Electricity Problem</option>
+                            <option value="Street Light">Street Light Issue</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Description</label>
+                        <textarea id="description" rows="4" placeholder="Describe the issue in detail..." required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label>Upload Image</label>
+                        <input type="file" id="imageInput" accept="image/*">
+                    </div>
+                    <button type="submit" class="btn-primary full-width">Submit Report</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- View Problems Page -->
+        <section id="view">
+            <div class="container">
+                <div class="filter-bar">
+                    <input type="text" id="searchBox" placeholder="Search by location..." onkeyup="filterProblems()">
+                    <select id="typeFilter" onchange="filterProblems()">
+                        <option value="all">All Types</option>
+                        <option value="Garbage">Garbage</option>
+                        <option value="Pothole">Potholes</option>
+                        <option value="Water Leakage">Water Leakage</option>
+                        <option value="Electricity">Electricity</option>
+                        <option value="Street Light">Street Lights</option>
+                    </select>
+                </div>
+                <div id="problemsGrid" class="cards-grid">
+                    <!-- Cards injected by JS -->
+                </div>
+            </div>
+        </section>
+
+        <!-- Dashboard Page -->
+        <section id="dashboard">
+            <div class="container">
+                <h2 class="section-title">City Insights Dashboard</h2>
+                <div class="stats-row">
+                    <div class="stat-card">
+                        <h3>Total Problems</h3>
+                        <p id="totalCount">0</p>
+                    </div>
+                    <div class="stat-card saffron-bg">
+                        <h3>Pending</h3>
+                        <p id="pendingCount">0</p>
+                    </div>
+                    <div class="stat-card green-bg">
+                        <h3>Solved</h3>
+                        <p id="solvedCount">0</p>
+                    </div>
+                </div>
+                <div class="chart-container glass-card">
+                    <canvas id="problemsChart"></canvas>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Local Problem Solver. Made with ❤️ for India.</p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
